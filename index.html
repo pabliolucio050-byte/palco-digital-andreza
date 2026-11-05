@@ -104,7 +104,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px
 .hero{padding-block:40px 64px;overflow:hidden}
 .hero::before{content:"";position:absolute;left:50%;top:-140px;width:900px;height:620px;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 30%,rgba(239,227,191,.17),rgba(239,227,191,.04) 45%,transparent 68%);pointer-events:none}
 .hero-grid{display:grid;gap:40px;position:relative}
-.pill{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;color:var(--nevoa);border:1px solid var(--lc);border-radius:999px;padding:7px 14px;background:rgba(0,0,0,.12)}
+.pill{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-size:.78rem;color:var(--nevoa);border:1px solid var(--lc);border-radius:999px;padding:7px 14px;background:rgba(0,0,0,.12)}
 .pill i{width:7px;height:7px;border-radius:50%;background:var(--terracota);box-shadow:0 0 0 4px rgba(208,116,58,.22)}
 .hero .lead{font-size:1.06rem;color:var(--nevoa)}
 .nichos{display:flex;flex-wrap:wrap;gap:8px}
@@ -118,7 +118,8 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px
 .mono small{display:block;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--nevoa);margin-top:10px}
 .selo-flut{position:absolute;background:var(--luz-2);color:var(--tinta);border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px;box-shadow:0 14px 34px -14px rgba(0,0,0,.6);font-size:.76rem;line-height:1.25;max-width:190px;animation:boia 5s ease-in-out infinite}
 .selo-flut b{font-size:1.35rem;font-weight:700;color:var(--terracota-esc);line-height:1}
-.s1{top:14%;left:-6px}.s2{bottom:12%;right:-6px;animation-delay:-2.5s}
+.s1{bottom:24%;left:-6px}.s2{bottom:6%;right:-6px;animation-delay:-2.5s}
+@media (max-width:919px){.palco-foto{display:grid;grid-template-columns:1fr 1fr;gap:10px}.arco{grid-column:1/-1}.selo-flut{position:static;max-width:none;animation:none;box-shadow:none}}
 @keyframes boia{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 @media (min-width:920px){.hero{padding-block:72px 96px}.hero-grid{grid-template-columns:1.2fr .8fr;align-items:center;gap:56px}.s1{left:-34px}.s2{right:-30px}}
 
