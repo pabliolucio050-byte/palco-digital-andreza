@@ -271,6 +271,8 @@ dialog.lb::backdrop{background:rgba(20,6,4,.88)}
 .card .tipo{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--nevoa)}
 .card.diag .tipo{color:var(--nevoa-l)}
 .preco{font-size:3.1rem;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--cortina);font-variant-numeric:tabular-nums}
+.preco .de{display:block;font-size:.95rem;font-weight:400;letter-spacing:0;color:var(--nevoa-l);text-decoration:line-through;text-decoration-color:var(--terracota-esc);margin-bottom:4px}
+.prazo{align-self:flex-start;font-size:.76rem;font-weight:600;letter-spacing:.04em;background:var(--cortina);color:var(--luz);padding:7px 14px;border-radius:999px}
 .preco .por{display:block;font-size:1rem;font-weight:500;letter-spacing:0;color:var(--nevoa-l);margin-bottom:8px}
 .preco small{font-size:1rem;font-weight:400;color:var(--nevoa-l)}
 .lista{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
@@ -633,7 +635,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-bet
     <div class="ofertas">
       <article class="card diag rv">
         <span class="tipo">Passo 1 · Diagnóstico Digital da Escola</span>
-        <div class="preco"><span class="por">por apenas</span>R$ 350<small>,00</small></div>
+        <div class="preco"><s class="de">Valor normal R$ 697,00</s><span class="por">por apenas</span>R$ 350<small>,00</small></div>
+        <span class="prazo">Condição de lançamento até 30/11</span>
         <p style="color:var(--nevoa-l)">Um encontro feito de perguntas estratégicas para mostrar onde está o buraco entre o que a escola entrega e o que o digital comunica. Você não precisa saber de marketing. Só precisa conhecer a sua escola.</p>
         <ul class="lista">
           <li>1 encontro de 1h a 1h30, ao vivo</li>
@@ -798,7 +801,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-bet
   var wa = function(t){ return "https://wa.me/" + NUM + "?text=" + encodeURIComponent(t); };
   var MSG = {
     topo: "Oi, Andreza! Vi a página do Palco Digital e quero entender como funciona.",
-    diagnostico: "Oi, Andreza! Quero agendar o Diagnóstico Digital da minha escola. Como está a sua agenda?",
+    diagnostico: "Oi, Andreza! Quero agendar o Diagnóstico Digital da minha escola na condição de lançamento de R$ 350. Como está a sua agenda?",
     solo: "Oi, Andreza! Sou artista e quero saber mais sobre o Palco Solo.",
     barra: "Oi, Andreza! Vim pela sua página e quero saber mais sobre o Palco Digital."
   };
