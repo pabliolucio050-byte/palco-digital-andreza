@@ -262,6 +262,19 @@ dialog.lb::backdrop{background:rgba(20,6,4,.88)}
 .lb-bar{display:flex;justify-content:center;gap:10px;margin-top:12px}
 .lb-bar button{min-height:44px;min-width:44px;padding:8px 16px;border-radius:999px;border:1px solid rgba(239,227,191,.4);background:rgba(74,28,21,.8);color:var(--luz);font:500 .9rem var(--f-display);cursor:pointer}
 .reel.tocando{cursor:default}.reel.tocando::after,.reel.tocando .reel-play,.reel.tocando .reel-info{display:none}
+.port-resumo{display:grid;gap:28px;align-items:center}
+@media (min-width:860px){.port-resumo{grid-template-columns:1.1fr .9fr;gap:56px}}
+.port-thumbs{position:relative;display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:10px;border:0;padding:0;background:none;cursor:pointer;aspect-ratio:4/3;width:100%;max-width:100%}
+.port-thumbs img{width:100%;height:100%;min-height:0;object-fit:cover;border-radius:14px;display:block;transition:transform .4s}
+.port-thumbs img:first-child{grid-row:span 2}
+.port-thumbs:hover img{transform:scale(1.02)}
+.port-thumbs span{position:absolute;left:10px;bottom:10px;font:500 .78rem var(--f-display);background:var(--luz);color:var(--cortina);padding:8px 14px;border-radius:999px}
+dialog.port-modal{width:100%;max-width:1080px;height:100%;max-height:100%;margin:0 auto;border:0;padding:0;background:var(--cortina);color:var(--luz);overflow-y:auto;overscroll-behavior:contain}
+@media (min-width:860px){dialog.port-modal{height:92vh;margin:4vh auto;border-radius:22px;border:1px solid var(--lc)}}
+.port-modal::backdrop{background:rgba(20,6,4,.82)}
+.pm-top{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:calc(12px + env(safe-area-inset-top,0px)) max(18px,env(safe-area-inset-right,0px)) 12px max(18px,env(safe-area-inset-left,0px));background:var(--cortina);border-bottom:1px solid var(--lc);font-size:.9rem}
+.pm-x{width:44px;height:44px;flex:none;border-radius:50%;border:1px solid var(--lc);background:var(--cortina-2);color:var(--luz);font-size:1.5rem;line-height:1;cursor:pointer}
+.pm-body{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(40px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px))}
 /* Oferta */
 .ofertas{display:grid;gap:16px}
 .card{border-radius:22px;padding:26px 22px;display:flex;flex-direction:column;gap:16px;transition:transform .2s,box-shadow .2s;min-width:0}
@@ -558,13 +571,29 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-bet
 <!-- PORTFÓLIO -->
 <section id="portfolio">
   <div class="wrap">
-    <div class="port-top">
-      <div class="rv">
-        <div class="eyebrow">Portfólio artístico</div>
+    <div class="port-resumo rv">
+      <div class="stack">
+        <div class="eyebrow" style="margin:0">Portfólio artístico</div>
         <h2>Quem dirige o seu palco digital vive o <span class="cena">palco de verdade.</span></h2>
-        <p class="sub">Atriz de teatro e audiovisual, com trajetória entre Goiânia, Rio de Janeiro e São Paulo. É dessa vivência de cena que nasce a direção que ela leva para cada escola.</p>
+        <p class="sub" style="margin:0">Atriz de teatro e audiovisual, com participação na Rede Globo e trabalhos entre Goiânia, Rio de Janeiro e São Paulo.</p>
+        <div class="btns" style="margin-top:6px">
+          <button type="button" class="btn btn-luz" id="portOpen">Ver portfólio completo</button>
+          <button type="button" class="btn btn-o" id="reelOpen"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>Assistir demo reel</button>
+        </div>
       </div>
-      <div class="marcos rv">
+      <button type="button" class="port-thumbs" id="portThumbs" aria-label="Abrir portfólio completo">
+        <img src="img/tjc-palco.jpg" alt="" loading="lazy"><img src="img/eco-set-1.jpg" alt="" loading="lazy"><img src="img/dancarinas-2.jpg" alt="" loading="lazy">
+        <span>Ver fotos, trabalhos e formação</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<dialog class="port-modal" id="portModal" aria-label="Portfólio artístico">
+  <div class="pm-top"><b>Portfólio artístico · Andreza Moura</b><button type="button" class="pm-x" id="portClose" aria-label="Fechar portfólio">×</button></div>
+  <div class="pm-body">
+    <div class="port-top">
+      <div class="marcos">
         <div><b>Desde 2006</b><span>Em formação e em cena no teatro</span></div>
         <div><b>DRT</b><span>Atriz com registro profissional</span></div>
         <div><b>Rede Globo</b><span>Participação na novela Rock Story</span></div>
@@ -572,18 +601,18 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-bet
       </div>
     </div>
 
-    <a class="reel rv" id="reel" href="https://www.youtube.com/watch?v=OtdEubzTITQ" target="_blank" rel="noopener" aria-label="Assistir ao demo reel da Andreza">
+    <a class="reel" id="reel" href="https://www.youtube.com/watch?v=OtdEubzTITQ" target="_blank" rel="noopener" aria-label="Assistir ao demo reel da Andreza">
       <img src="img/dancarinas-2.jpg" alt="" loading="lazy" width="1200" height="675">
       <span class="reel-play"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
       <span class="reel-info"><small>Demo reel</small><b>Andreza Moura, atriz</b><em>Toque para assistir</em></span>
     </a>
 
-    <div class="filtros rv" role="group" aria-label="Filtrar fotos">
+    <div class="filtros" role="group" aria-label="Filtrar fotos">
       <button type="button" aria-pressed="true" data-f="todos">Todos</button>
       <button type="button" aria-pressed="false" data-f="teatro">Teatro</button>
       <button type="button" aria-pressed="false" data-f="audiovisual">Audiovisual</button>
     </div>
-    <div class="galeria rv" id="galeria">
+    <div class="galeria" id="galeria">
       <button type="button" class="foto-g alta" data-cat="teatro"><img src="img/separei-casa-cheia.jpg" alt="Teatro lotado na peça Separei. E Agora?" loading="lazy" width="562" height="1000"><span>Separei. E Agora? · casa cheia, RJ</span></button>
       <button type="button" class="foto-g" data-cat="teatro"><img src="img/tjc-palco.jpg" alt="Andreza em cena no monólogo Segurança é Vida" loading="lazy" width="1100" height="733"><span>Segurança é Vida · monólogo</span></button>
       <button type="button" class="foto-g" data-cat="teatro"><img src="img/tjc-plateia.jpg" alt="Apresentação do monólogo Segurança é Vida para o público" loading="lazy" width="1200" height="800"><span>Segurança é Vida · Projeto TJC</span></button>
@@ -595,7 +624,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-bet
     </div>
 
     <div class="creditos">
-      <div class="rv">
+      <div>
         <div class="eyebrow">Experiência artística</div>
         <ul class="linha-t">
           <li><span class="ano">2023 a 2026</span><b>Segurança é Vida</b><small>Monólogo · direção Samuel Baldani · Projeto TJC, Associação Nacional dos Magistrados da Justiça do Trabalho</small></li>
@@ -607,7 +636,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-bet
           <li><span class="ano">2015 a 2016</span><b>MC Favorito: Perigos Online</b><small>Teatro · personagem Gabi · Cia Bento Vasconcelos · GO, TO e SE</small></li>
         </ul>
       </div>
-      <div class="stack rv">
+      <div class="stack">
         <div class="eyebrow" style="margin:0">Formação</div>
         <div class="form-list">
           <div><b>Audiovisual</b><span>Victor Ferrade, Ricardo Conti e Wolf Maya (RJ) · Oficina de cinema com Odécio Antônio no Martim Cererê</span></div>
@@ -622,7 +651,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-bet
       </div>
     </div>
   </div>
-</section>
+</dialog>
 
 <!-- OFERTA -->
 <section id="trilhas">
@@ -989,6 +1018,17 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-bet
     f.style.cssText = "position:absolute;inset:0;width:100%;height:100%;border:0;z-index:2";
     reel.classList.add("tocando"); reel.appendChild(f); reel.removeAttribute("href");
   }, {once:true});
+
+
+  /* Portfólio em janela */
+  var pm = document.getElementById("portModal");
+  function abrePort(){ if (pm.showModal) pm.showModal(); else pm.setAttribute("open",""); pm.scrollTop = 0; }
+  function fechaPort(){ if (pm.close) pm.close(); else pm.removeAttribute("open"); }
+  document.getElementById("portOpen").addEventListener("click", abrePort);
+  document.getElementById("portThumbs").addEventListener("click", abrePort);
+  document.getElementById("reelOpen").addEventListener("click", function(){ abrePort(); setTimeout(function(){ var r = document.getElementById("reel"); if (r && r.hasAttribute("href")) r.click(); }, 150); });
+  document.getElementById("portClose").addEventListener("click", fechaPort);
+  pm.addEventListener("click", function(e){ if (e.target === pm) fechaPort(); });
 
   /* Copiar número */
   var cp = document.getElementById("copiar");
