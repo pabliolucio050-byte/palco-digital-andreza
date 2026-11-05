@@ -1,0 +1,998 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Palco Digital | Andreza Moura</title>
+<meta name="description" content="Posicionamento digital para escolas de dança e arte. Comece pelo Diagnóstico Digital da Escola com a Andreza Moura.">
+<meta name="theme-color" content="#4a1c15">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Palco Digital | Andreza Moura">
+<meta property="og:description" content="Sua escola tem muito mais do que aparece no Instagram. Comece pelo Diagnóstico Digital da Escola.">
+<meta property="og:image" content="https://palco-digital-andreza.vercel.app/img/og.jpg">
+<meta property="og:url" content="https://palco-digital-andreza.vercel.app/">
+<meta property="og:locale" content="pt_BR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,600&display=swap">
+<style>
+/* Layout: abertura de palco em vinho escuro com spotlight, faixas creme como "luz de cena", coluna única no celular que abre em grade no desktop. Barra de WhatsApp entra quando o topo sai da tela. */
+:root{
+  --cortina:#4a1c15;      /* fundo principal, vinho profundo */
+  --cortina-2:#5e2a20;    /* cartões sobre o vinho */
+  --cortina-3:#73382b;    /* hover / ativo */
+  --luz:#efe3bf;          /* creme da marca */
+  --luz-2:#f8f1de;        /* creme claro */
+  --terracota:#d0743a;    /* blazer laranja queimado, acento */
+  --terracota-esc:#a24f1e;/* acento sobre creme */
+  --tinta:#34140f;        /* texto sobre creme */
+  --nevoa:#d6c1a0;        /* texto secundário sobre vinho */
+  --nevoa-l:#6e4738;      /* texto secundário sobre creme */
+  --lc:rgba(239,227,191,.16);
+  --ll:rgba(74,28,21,.16);
+  --zap:#1e8b4d;
+  --f-display:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-cena:"Fraunces",Georgia,"Times New Roman",serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0}
+[hidden]{display:none!important}
+:root{padding-top:env(safe-area-inset-top,0px)}
+html{scroll-behavior:smooth}
+body{background:var(--cortina);color:var(--luz);font-family:var(--f-display);font-weight:300;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--cortina)}
+a{color:inherit}
+img{max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+.narrow{max-width:760px}
+section{padding-block:72px;position:relative}
+.creme{background:var(--luz);color:var(--tinta)}
+.creme-2{background:var(--luz-2);color:var(--tinta)}
+h1,h2,h3{margin:0;text-wrap:balance;letter-spacing:-.015em;font-weight:700}
+h1{font-size:clamp(2.15rem,8.4vw,4rem);line-height:1.05}
+h2{font-size:clamp(1.7rem,6vw,2.6rem);line-height:1.12}
+h3{font-size:1.12rem;font-weight:600;line-height:1.3;letter-spacing:0}
+p{margin:0;max-width:64ch}
+.cena{font-family:var(--f-cena);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--terracota)}
+.creme .cena,.creme-2 .cena{color:var(--terracota-esc)}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--nevoa);margin-bottom:16px}
+.eyebrow::before{content:"";width:30px;height:1px;background:currentColor;opacity:.7}
+.creme .eyebrow,.creme-2 .eyebrow{color:var(--nevoa-l)}
+.sub{color:var(--nevoa);font-size:1.02rem;margin-top:14px}
+.creme .sub,.creme-2 .sub{color:var(--nevoa-l)}
+.head{margin-bottom:36px}
+.center{text-align:center}.center .eyebrow{justify-content:center}.center p{margin-inline:auto}
+.stack{display:flex;flex-direction:column;gap:16px}
+
+/* Entrada suave: o conteúdo já está visível, só desliza */
+.rv{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rv:not(.on){transform:translateY(18px)}
+
+/* Botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 26px;border-radius:999px;font-family:var(--f-display);font-weight:600;font-size:.94rem;text-decoration:none;text-align:center;border:0;cursor:pointer;transition:transform .15s,box-shadow .15s,background .15s,color .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--terracota);outline-offset:3px}
+.btn-luz{background:var(--luz);color:var(--cortina);box-shadow:0 10px 30px -12px rgba(239,227,191,.5)}
+.btn-zap{background:var(--zap);color:#fff;box-shadow:0 10px 30px -12px rgba(30,139,77,.8)}
+.btn-vinho{background:var(--cortina);color:var(--luz)}
+.btn-o{background:transparent;color:var(--luz);box-shadow:inset 0 0 0 1px var(--lc)}
+.btn-o:hover{box-shadow:inset 0 0 0 1px var(--luz)}
+.creme .btn-o,.creme-2 .btn-o{color:var(--cortina);box-shadow:inset 0 0 0 1px var(--cortina)}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.ico{width:20px;height:20px;flex:none}
+
+/* Navegação */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(74,28,21,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--lc)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+.marca b{font-weight:600;font-size:.95rem;line-height:1.05;display:block}
+.marca span{display:block;font-size:.66rem;color:var(--nevoa);letter-spacing:.06em}
+.menu{display:none;gap:26px;font-size:.86rem;font-weight:400}
+.menu a{text-decoration:none;color:var(--nevoa);transition:color .15s}
+.menu a:hover{color:var(--luz)}
+.nav-cta{display:none;min-height:42px;padding:8px 18px;font-size:.84rem}
+.burger{width:44px;height:44px;border-radius:12px;background:var(--cortina-2);border:1px solid var(--lc);color:var(--luz);display:grid;place-items:center;cursor:pointer}
+.gaveta{position:fixed;inset:calc(64px + env(safe-area-inset-top,0px)) 0 auto;z-index:49;background:var(--cortina);border-bottom:1px solid var(--lc);padding:8px max(18px,env(safe-area-inset-right,0px)) 22px max(18px,env(safe-area-inset-left,0px));display:flex;flex-direction:column}
+.gaveta a{padding:14px 2px;border-bottom:1px solid var(--lc);text-decoration:none;font-weight:500}
+.gaveta .btn{margin-top:16px;border:0}
+@media (min-width:920px){.menu{display:flex}.nav-cta{display:inline-flex}.burger{display:none}.gaveta{display:none!important}}
+
+/* Hero */
+.hero{padding-block:40px 64px;overflow:hidden}
+.hero::before{content:"";position:absolute;left:50%;top:-140px;width:900px;height:620px;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 30%,rgba(239,227,191,.17),rgba(239,227,191,.04) 45%,transparent 68%);pointer-events:none}
+.hero-grid{display:grid;gap:40px;position:relative}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;color:var(--nevoa);border:1px solid var(--lc);border-radius:999px;padding:7px 14px;background:rgba(0,0,0,.12)}
+.pill i{width:7px;height:7px;border-radius:50%;background:var(--terracota);box-shadow:0 0 0 4px rgba(208,116,58,.22)}
+.hero .lead{font-size:1.06rem;color:var(--nevoa)}
+.nichos{display:flex;flex-wrap:wrap;gap:8px}
+.nichos span{font-size:.76rem;border:1px solid var(--lc);border-radius:999px;padding:5px 12px;color:var(--nevoa)}
+.palco-foto{position:relative;max-width:420px;width:100%;margin:0 auto}
+.arco{aspect-ratio:4/5;max-width:100%;border-radius:220px 220px 22px 22px;overflow:hidden;position:relative;border:1px solid var(--lc);
+  background:radial-gradient(ellipse at 50% 12%,rgba(255,236,200,.55),rgba(239,227,191,.12) 36%,transparent 62%),linear-gradient(180deg,#8a4632 0%,#5a2419 58%,#2e0f0b 100%)}
+.arco::after{content:"";position:absolute;inset:auto 0 0;height:22%;background:repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 2px,transparent 2px 26px),linear-gradient(180deg,transparent,rgba(0,0,0,.35))}
+.mono{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.mono b{font-family:var(--f-cena);font-style:italic;font-weight:400;font-size:5.4rem;line-height:1;color:var(--luz);opacity:.9}
+.mono small{display:block;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--nevoa);margin-top:10px}
+.selo-flut{position:absolute;background:var(--luz-2);color:var(--tinta);border-radius:14px;padding:10px 14px;display:flex;align-items:center;gap:10px;box-shadow:0 14px 34px -14px rgba(0,0,0,.6);font-size:.76rem;line-height:1.25;max-width:190px;animation:boia 5s ease-in-out infinite}
+.selo-flut b{font-size:1.35rem;font-weight:700;color:var(--terracota-esc);line-height:1}
+.s1{top:14%;left:-6px}.s2{bottom:12%;right:-6px;animation-delay:-2.5s}
+@keyframes boia{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@media (min-width:920px){.hero{padding-block:72px 96px}.hero-grid{grid-template-columns:1.2fr .8fr;align-items:center;gap:56px}.s1{left:-34px}.s2{right:-30px}}
+
+/* Faixa de prova */
+.faixa{background:var(--luz);color:var(--tinta);padding-block:26px}
+.faixa .wrap{display:flex;flex-wrap:wrap;gap:18px 40px;align-items:center;justify-content:space-between}
+.faixa q{font-family:var(--f-cena);font-style:italic;font-size:1.12rem;quotes:"\201C" "\201D"}
+.faixa small{display:block;font-size:.78rem;color:var(--nevoa-l);margin-top:4px}
+.faixa .nums{display:flex;gap:28px}
+.faixa .nums div{font-size:.74rem;color:var(--nevoa-l);line-height:1.3}
+.faixa .nums b{display:block;font-size:1.6rem;font-weight:700;color:var(--cortina);line-height:1.05}
+
+/* Dores */
+.dores{display:grid;gap:14px}
+.dor{background:#fffaf0;border:1px solid var(--ll);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px;transition:transform .2s,box-shadow .2s}
+.dor:hover{transform:translateY(-4px);box-shadow:0 18px 34px -22px rgba(74,28,21,.45)}
+.dor .q{font-family:var(--f-cena);font-style:italic;font-size:1.15rem;color:var(--terracota-esc)}
+.dor p{font-size:.94rem;color:var(--nevoa-l)}
+@media (min-width:760px){.dores{grid-template-columns:repeat(3,1fr)}}
+.virada{margin-top:30px;font-size:1.15rem;font-weight:600}
+
+/* Termômetro */
+.termo{background:var(--cortina-2);border:1px solid var(--lc);border-radius:22px;padding:24px 20px;display:grid;gap:24px}
+.checks{display:flex;flex-direction:column;gap:10px}
+.check{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:14px;border:1px solid var(--lc);cursor:pointer;transition:background .15s,border-color .15s;font-size:.94rem;line-height:1.45}
+.check:hover{background:var(--cortina-3)}
+.check input{position:absolute;opacity:0;pointer-events:none}
+.check .box{width:22px;height:22px;border-radius:7px;border:1.5px solid var(--nevoa);flex:none;margin-top:1px;display:grid;place-items:center;transition:.15s}
+.check input:checked + .box{background:var(--terracota);border-color:var(--terracota)}
+.check input:checked + .box::after{content:"";width:10px;height:6px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.check input:focus-visible + .box{outline:3px solid var(--luz);outline-offset:2px}
+.check.on{border-color:rgba(208,116,58,.6);background:rgba(208,116,58,.08)}
+.result{display:flex;flex-direction:column;gap:14px}
+.medidor{height:12px;border-radius:999px;background:rgba(0,0,0,.25);overflow:hidden}
+.medidor i{display:block;height:100%;width:8%;border-radius:999px;background:linear-gradient(90deg,var(--luz),var(--terracota));transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.escala{display:flex;justify-content:space-between;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--nevoa)}
+.r-titulo{font-size:1.35rem;font-weight:700}
+.r-texto{color:var(--nevoa);font-size:.95rem}
+@media (min-width:860px){.termo{grid-template-columns:1.15fr .85fr;padding:34px;gap:36px;align-items:center}}
+
+/* Pilares em abas */
+.abas{display:flex;gap:6px;padding:6px;border-radius:999px;background:rgba(74,28,21,.08);border:1px solid var(--ll);overflow-x:auto;scrollbar-width:none}
+.abas::-webkit-scrollbar{display:none}
+.aba{flex:1 0 auto;min-height:46px;padding:10px 18px;border-radius:999px;border:0;background:transparent;font:500 .88rem var(--f-display);color:var(--nevoa-l);cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.aba[aria-selected="true"]{background:var(--cortina);color:var(--luz)}
+.painel{margin-top:18px;background:#fffaf0;border:1px solid var(--ll);border-radius:22px;padding:26px 22px;display:grid;gap:16px}
+.painel .n{font-size:3.2rem;font-weight:800;line-height:.9;color:var(--terracota-esc);letter-spacing:-.03em}
+.painel blockquote{margin:0;padding-left:14px;border-left:2px solid var(--terracota-esc);font-family:var(--f-cena);font-style:italic;font-size:1.12rem;color:var(--tinta)}
+.painel .entrega{display:flex;flex-wrap:wrap;gap:8px}
+.painel .entrega span{font-size:.78rem;font-weight:500;background:var(--luz);border-radius:999px;padding:6px 12px;color:var(--cortina)}
+.painel.troca{animation:troca .35s ease}
+@keyframes troca{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (min-width:860px){.painel{grid-template-columns:110px 1fr;padding:34px 34px;column-gap:30px}.painel .n{grid-row:span 4}}
+
+/* Ciclo */
+.ciclo-grid{display:grid;gap:30px;align-items:center}
+.roda{position:relative;width:min(340px,100%);aspect-ratio:1;margin:0 auto}
+.roda svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.no{position:absolute;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;border:1px solid var(--lc);background:var(--cortina-2);color:var(--luz);font:700 1rem var(--f-display);cursor:pointer;display:grid;place-items:center;transition:background .2s,transform .2s,box-shadow .2s;font-variant-numeric:tabular-nums}
+.no:hover{transform:scale(1.07)}
+.no.ativo{background:var(--luz);color:var(--cortina);box-shadow:0 0 0 7px rgba(239,227,191,.14)}
+.no small{position:absolute;top:62px;font:500 .7rem var(--f-display);letter-spacing:.04em;color:var(--nevoa);white-space:nowrap}
+.miolo{position:absolute;inset:23%;border-radius:50%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle,rgba(239,227,191,.12),transparent 70%)}
+.miolo b{display:block;font-family:var(--f-cena);font-style:italic;font-weight:400;font-size:1.5rem;line-height:1.1}
+.miolo span{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--nevoa)}
+.etapa-box{background:var(--cortina-2);border:1px solid var(--lc);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.etapa-box .pil{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--terracota)}
+.etapa-box h3{font-size:1.5rem}
+.etapa-box p{color:var(--nevoa)}
+.etapa-nav{display:flex;gap:10px;margin-top:8px}
+.etapa-nav button{flex:1;min-height:46px;border-radius:999px;border:1px solid var(--lc);background:transparent;color:var(--luz);font:500 .86rem var(--f-display);cursor:pointer}
+.etapa-nav button:hover{background:var(--cortina-3)}
+@media (min-width:860px){.ciclo-grid{grid-template-columns:1fr 1fr;gap:56px}}
+
+/* Quem conduz */
+.sobre-grid{display:grid;gap:32px;align-items:center}
+.retrato{aspect-ratio:1;max-width:100%;border-radius:24px;background:radial-gradient(ellipse at 35% 25%,rgba(255,240,210,.9),rgba(239,227,191,.4) 40%,transparent 70%),linear-gradient(160deg,#d8a074,#8a4632);display:grid;place-items:center;position:relative;overflow:hidden}
+.retrato b{font-family:var(--f-cena);font-style:italic;font-weight:400;font-size:6rem;color:var(--cortina);opacity:.8}
+.retrato small{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-size:.72rem;background:rgba(255,250,240,.8);border-radius:999px;padding:5px 12px;color:var(--tinta);white-space:nowrap}
+.numeros{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.numeros div{border:1px solid var(--ll);border-radius:16px;padding:16px 12px;background:#fffaf0;min-width:0}
+.numeros b{display:block;font-size:1.9rem;font-weight:800;color:var(--cortina);line-height:1;font-variant-numeric:tabular-nums}
+.numeros span{display:block;font-size:.76rem;line-height:1.35;color:var(--nevoa-l);margin-top:6px}
+.assina{font-family:var(--f-cena);font-style:italic;font-size:1.5rem;color:var(--terracota-esc)}
+@media (min-width:860px){.sobre-grid{grid-template-columns:.8fr 1.2fr;gap:56px}}
+
+
+.arco img,.retrato img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.arco img{object-position:50% 30%}
+.arco::after{z-index:1;background:linear-gradient(180deg,transparent,rgba(46,15,11,.45))}
+.retrato img{object-position:62% 40%}
+.retrato small{z-index:1}
+/* Portfólio */
+.port-top{display:grid;gap:18px;margin-bottom:28px}
+.marcos{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.marcos div{background:var(--cortina-2);border:1px solid var(--lc);border-radius:16px;padding:16px;min-width:0}
+.marcos b{display:block;font-size:1.5rem;font-weight:700;line-height:1.1;color:var(--luz)}
+.marcos span{display:block;font-size:.78rem;color:var(--nevoa);margin-top:4px;line-height:1.35}
+@media (min-width:760px){.marcos{grid-template-columns:repeat(4,1fr)}}
+.reel{position:relative;display:block;aspect-ratio:16/9;max-width:100%;border-radius:22px;overflow:hidden;margin-bottom:34px;text-decoration:none;color:#fff;border:1px solid var(--lc);box-shadow:0 30px 60px -34px rgba(0,0,0,.8)}
+.reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.reel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,15,11,.1) 30%,rgba(46,15,11,.85))}
+.reel:hover img{transform:scale(1.04)}
+.reel-play{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);z-index:1;width:76px;height:76px;border-radius:50%;background:var(--luz);color:var(--cortina);display:grid;place-items:center;box-shadow:0 0 0 12px rgba(239,227,191,.2);transition:transform .2s}
+.reel-play svg{margin-left:4px}
+.reel:hover .reel-play{transform:translate(-50%,-50%) scale(1.08)}
+.reel-info{position:absolute;left:20px;right:20px;bottom:16px;z-index:1;display:flex;flex-direction:column;gap:2px}
+.reel-info small{font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--luz)}
+.reel-info b{font-size:clamp(1.05rem,4vw,1.5rem);font-weight:700}
+.reel-info em{font-style:normal;font-size:.8rem;color:var(--nevoa)}
+@media (max-width:480px){.reel{aspect-ratio:4/3}.reel-play{width:62px;height:62px}}
+.filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filtros button{min-height:42px;padding:8px 18px;border-radius:999px;border:1px solid var(--lc);background:transparent;color:var(--nevoa);font:500 .86rem var(--f-display);cursor:pointer;transition:.2s}
+.filtros button[aria-pressed="true"]{background:var(--luz);color:var(--cortina);border-color:var(--luz)}
+.galeria{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;grid-auto-flow:dense}
+@media (min-width:760px){.galeria{grid-template-columns:repeat(3,1fr);gap:14px}}
+.foto-g{position:relative;border:0;padding:0;margin:0;border-radius:16px;overflow:hidden;cursor:zoom-in;background:var(--cortina-2);aspect-ratio:4/3;max-width:100%;min-width:0}
+.foto-g.alta{grid-row:span 2;aspect-ratio:auto}
+.foto-g img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.foto-g:hover img{transform:scale(1.05)}
+.foto-g span{position:absolute;left:8px;bottom:8px;right:8px;text-align:left;font:500 .72rem/1.3 var(--f-display);color:#fff;background:rgba(46,15,11,.72);border-radius:10px;padding:6px 10px}
+.creditos{display:grid;gap:28px;margin-top:40px}
+@media (min-width:860px){.creditos{grid-template-columns:1.2fr .8fr;gap:48px}}
+.linha-t{list-style:none;margin:0;padding:0;border-left:1px solid var(--lc)}
+.linha-t li{position:relative;padding:0 0 20px 22px}
+.linha-t li::before{content:"";position:absolute;left:-5px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--terracota)}
+.linha-t b{display:block;font-weight:600}
+.linha-t small{display:block;font-size:.8rem;color:var(--nevoa);line-height:1.45}
+.linha-t .ano{font-size:.7rem;font-weight:600;letter-spacing:.14em;color:var(--terracota);font-variant-numeric:tabular-nums}
+.form-list{display:flex;flex-direction:column;gap:12px}
+.form-list div{border-bottom:1px solid var(--lc);padding-bottom:12px}
+.form-list b{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terracota);margin-bottom:4px}
+.form-list span{font-size:.88rem;color:var(--nevoa)}
+.habs{display:flex;flex-wrap:wrap;gap:8px}
+.habs span{font-size:.78rem;border:1px solid var(--lc);border-radius:999px;padding:5px 12px}
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(96vw,1100px);max-height:92vh;color:var(--luz)}
+dialog.lb::backdrop{background:rgba(20,6,4,.88)}
+.lb img{display:block;max-width:100%;max-height:78vh;border-radius:14px;margin:0 auto}
+.lb p{text-align:center;font-size:.88rem;margin:12px auto 0;color:var(--luz)}
+.lb-bar{display:flex;justify-content:center;gap:10px;margin-top:12px}
+.lb-bar button{min-height:44px;min-width:44px;padding:8px 16px;border-radius:999px;border:1px solid rgba(239,227,191,.4);background:rgba(74,28,21,.8);color:var(--luz);font:500 .9rem var(--f-display);cursor:pointer}
+.reel.tocando{cursor:default}.reel.tocando::after,.reel.tocando .reel-play,.reel.tocando .reel-info{display:none}
+/* Oferta */
+.ofertas{display:grid;gap:16px}
+.card{border-radius:22px;padding:26px 22px;display:flex;flex-direction:column;gap:16px;transition:transform .2s,box-shadow .2s;min-width:0}
+.card:hover{transform:translateY(-4px)}
+.card.diag{background:var(--luz);color:var(--tinta);box-shadow:0 24px 50px -28px rgba(0,0,0,.7)}
+.card.trilha{background:var(--cortina-2);border:1px solid var(--lc)}
+.card .tipo{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--nevoa)}
+.card.diag .tipo{color:var(--nevoa-l)}
+.preco{font-size:3.1rem;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--cortina);font-variant-numeric:tabular-nums}
+.preco small{font-size:1rem;font-weight:400;color:var(--nevoa-l)}
+.lista{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.lista li{padding:11px 0 11px 30px;border-bottom:1px solid var(--lc);position:relative;font-size:.93rem}
+.lista li:last-child{border-bottom:0}
+.lista li::before{content:"";position:absolute;left:2px;top:15px;width:16px;height:16px;border-radius:50%;background:rgba(208,116,58,.18)}
+.lista li::after{content:"";position:absolute;left:7px;top:20px;width:6px;height:3px;border-left:1.5px solid var(--terracota);border-bottom:1.5px solid var(--terracota);transform:rotate(-45deg)}
+.card.diag .lista li,.creme .lista li{border-color:var(--ll)}
+.card.diag .lista li::after{border-color:var(--terracota-esc)}
+.seg{display:flex;padding:5px;border-radius:999px;background:rgba(0,0,0,.22);gap:4px}
+.seg button{flex:1;min-height:42px;border-radius:999px;border:0;background:transparent;color:var(--nevoa);font:500 .86rem var(--f-display);cursor:pointer;transition:.2s}
+.seg button[aria-pressed="true"]{background:var(--luz);color:var(--cortina)}
+.tag{display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--terracota);color:#fff;padding:4px 9px;border-radius:999px;margin-left:8px;vertical-align:middle}
+.dur{font-size:.86rem;color:var(--nevoa)}
+.nota{font-size:.88rem;color:var(--nevoa);border-left:2px solid var(--terracota);padding-left:14px;font-style:italic}
+@media (min-width:860px){.ofertas{grid-template-columns:.9fr 1.1fr;align-items:start}}
+
+/* Depoimentos carrossel */
+.trilho{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px;margin-inline:calc(-1*max(18px,env(safe-area-inset-left,0px)));padding-inline:max(18px,env(safe-area-inset-left,0px))}
+.trilho::-webkit-scrollbar{display:none}
+.dep{flex:0 0 min(86%,420px);scroll-snap-align:start;background:#fffaf0;border:1px solid var(--ll);border-radius:22px;padding:26px 22px;display:flex;flex-direction:column;gap:14px;transition:transform .2s,box-shadow .2s;margin:0}
+.dep:hover{transform:translateY(-4px);box-shadow:0 20px 36px -24px rgba(74,28,21,.5)}
+.dep .origem{display:flex;align-items:center;gap:8px;font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--nevoa-l)}
+.dep .origem::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--terracota)}
+.dep blockquote{margin:0;font-family:var(--f-cena);font-style:italic;font-size:1.12rem;line-height:1.45;color:var(--tinta);flex:1}
+.dep figcaption{display:flex;align-items:center;gap:12px;font-size:.86rem;font-weight:500}
+.dep figcaption i{width:38px;height:38px;border-radius:50%;background:var(--cortina);color:var(--luz);display:grid;place-items:center;font-style:normal;font-weight:600;font-size:.86rem;flex:none}
+.dep figcaption span{display:block;font-weight:300;font-size:.78rem;color:var(--nevoa-l)}
+.dep-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:22px}
+.seta{width:46px;height:46px;border-radius:50%;border:1px solid var(--cortina);background:transparent;color:var(--cortina);cursor:pointer;display:grid;place-items:center;transition:.15s}
+.seta:hover{background:var(--cortina);color:var(--luz)}
+.dots{display:flex;gap:6px}
+.dots button{width:9px;height:9px;padding:0;border-radius:999px;border:0;background:rgba(74,28,21,.25);cursor:pointer;transition:width .25s,background .25s}
+.dots button[aria-current="true"]{width:26px;background:var(--cortina)}
+
+/* Formulário */
+.form-grid{display:grid;gap:28px}
+form{background:var(--cortina-2);border:1px solid var(--lc);border-radius:22px;padding:24px 20px;display:grid;gap:14px}
+.campo{display:flex;flex-direction:column;gap:6px;min-width:0}
+.campo label{font-size:.8rem;font-weight:500;color:var(--nevoa)}
+.campo input,.campo select{width:100%;min-height:50px;border-radius:12px;border:1px solid var(--lc);background:rgba(0,0,0,.2);color:var(--luz);font:400 1rem var(--f-display);padding:12px 14px;transition:border .15s,background .15s}
+.campo input::placeholder{color:rgba(214,193,160,.55)}
+.campo input:focus,.campo select:focus{outline:none;border-color:var(--terracota);background:rgba(0,0,0,.28)}
+.campo select option{background:var(--cortina);color:var(--luz)}
+.campo.erro input,.campo.erro select{border-color:#e98a6c}
+.msg-erro{font-size:.8rem;color:#f0a98f;min-height:1.1em}
+.duas{display:grid;gap:14px}
+@media (min-width:560px){.duas{grid-template-columns:1fr 1fr}}
+.previa{font-size:.8rem;color:var(--nevoa);background:rgba(0,0,0,.18);border-radius:12px;padding:12px 14px;white-space:pre-line;border:1px dashed var(--lc)}
+@media (min-width:860px){.form-grid{grid-template-columns:.9fr 1.1fr;align-items:center;gap:56px}form{padding:32px}}
+
+/* Palco Solo */
+.solo{display:grid;gap:22px;background:#fffaf0;border:1px solid var(--ll);border-radius:24px;padding:28px 22px}
+@media (min-width:860px){.solo{grid-template-columns:1.3fr .7fr;align-items:center;padding:40px}}
+.solo .info{display:flex;gap:10px;flex-wrap:wrap}
+.solo .info span{background:var(--luz);color:var(--cortina);font-size:.8rem;font-weight:500;padding:7px 13px;border-radius:999px}
+
+/* FAQ */
+.faq details{border-bottom:1px solid var(--ll)}
+.faq details:first-child{border-top:1px solid var(--ll)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 44px 20px 0;font-weight:500;position:relative;font-size:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:26px;height:26px;margin-top:-13px;border-radius:50%;background:var(--luz) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 6v12M6 12h12' stroke='%234a1c15' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center/14px no-repeat;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 20px;color:var(--nevoa-l);font-size:.95rem}
+
+/* Final */
+.final{text-align:center;overflow:hidden}
+.final::before{content:"";position:absolute;left:50%;top:0;width:820px;height:520px;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 0%,rgba(239,227,191,.16),transparent 64%);pointer-events:none}
+.final .wrap{position:relative;display:flex;flex-direction:column;align-items:center;gap:22px}
+.final .btns{justify-content:center;width:100%;max-width:580px}
+.final .btns .btn{flex:1 1 230px}
+footer{border-top:1px solid var(--lc);padding-block:28px calc(108px + env(safe-area-inset-bottom,0px));font-size:.8rem;color:var(--nevoa)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center}
+.copiar{background:transparent;border:1px solid var(--lc);color:var(--luz);border-radius:999px;padding:6px 12px;font:500 .78rem var(--f-display);cursor:pointer}
+
+/* Barra fixa e botão flutuante */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:16px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:linear-gradient(180deg,rgba(74,28,21,0),rgba(74,28,21,.96) 35%);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.barra .btn{width:100%;max-width:520px;margin:0 auto;display:flex}
+.barra.hide{transform:translateY(110%)}
+.flut{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:39;width:58px;height:58px;border-radius:50%;background:var(--zap);color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px -10px rgba(0,0,0,.6);transition:opacity .2s,transform .2s}
+.flut:hover{transform:scale(1.06)}
+.flut.hide{opacity:0;pointer-events:none;transform:scale(.8)}
+.progresso{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:2px;width:0;background:var(--terracota);z-index:61}
+
+@media (min-width:760px){section{padding-block:104px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.js .rv:not(.on){transform:none}}
+</style>
+</head>
+<body>
+<div class="progresso" id="progresso" aria-hidden="true"></div>
+
+<nav aria-label="Principal">
+  <div class="wrap">
+    <a class="marca" href="#inicio">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M8 35V17a8.5 8.5 0 1 1 8.5 8.5" stroke="#efe3bf" stroke-width="2" stroke-linecap="round"/><path d="M32 4v18a8.5 8.5 0 1 1-8.5-8.5" stroke="#d0743a" stroke-width="2" stroke-linecap="round"/></svg>
+      <div><b>Palco Digital</b><span>por Andreza Moura</span></div>
+    </a>
+    <div class="menu">
+      <a href="#termometro">Termômetro</a>
+      <a href="#metodo">Método</a>
+      <a href="#ciclo">Ciclo</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#trilhas">Trilhas</a>
+      <a href="#depoimentos">Resultados</a>
+    </div>
+    <a class="btn btn-zap nav-cta" data-wa="topo" href="#" target="_blank" rel="noopener">Falar com a Andreza</a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="gaveta" aria-label="Abrir menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="gaveta" id="gaveta" hidden>
+  <a href="#termometro">Termômetro da escola</a>
+  <a href="#metodo">Método</a>
+  <a href="#ciclo">Ciclo Bastidor-Palco</a>
+  <a href="#sobre">Quem conduz</a>
+  <a href="#portfolio">Portfólio artístico</a>
+  <a href="#trilhas">Diagnóstico e trilhas</a>
+  <a href="#depoimentos">Resultados</a>
+  <a class="btn btn-zap" data-wa="topo" href="#" target="_blank" rel="noopener">Falar com a Andreza no WhatsApp</a>
+</div>
+
+<main id="inicio">
+
+<!-- GANCHO -->
+<header class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div class="stack" style="gap:22px">
+      <span class="pill"><i></i>Posicionamento digital para escolas de arte</span>
+      <h1>Sua escola tem muito mais do que aparece no <span class="cena">Instagram.</span></h1>
+      <p class="lead">Você dá conta da escola inteira e ainda trava na hora de postar. O problema não é talento, é direção. A gente organiza isso até o seu perfil começar a trazer matrícula.</p>
+      <div class="btns">
+        <a class="btn btn-luz" data-wa="diagnostico" href="#" target="_blank" rel="noopener">Quero o Diagnóstico da minha escola</a>
+        <a class="btn btn-o" href="#termometro">Fazer o termômetro grátis</a>
+      </div>
+      <div class="nichos"><span>Dança</span><span>Teatro</span><span>Música</span><span>Artes visuais</span><span>Estúdios</span><span>Companhias</span></div>
+    </div>
+    <div class="palco-foto">
+      <div class="arco"><img src="img/andreza-retrato.jpg" alt="Andreza Moura em retrato de estúdio" width="733" height="1100" fetchpriority="high"></div>
+      <div class="selo-flut s1"><b>1:1</b><span>Direção individual em todos os formatos</span></div>
+      <div class="selo-flut s2"><b>6</b><span>Etapas do Ciclo Bastidor-Palco</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- PROVA RÁPIDA -->
+<div class="faixa">
+  <div class="wrap">
+    <div>
+      <q>Antes, o perfil da escola já era bonito. Agora, é estratégico.</q>
+      <small>Fleur Escola de Artes</small>
+    </div>
+    <div class="nums">
+      <div><b>3</b>pilares de método</div>
+      <div><b>12</b>meses de ciclo completo</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEMA -->
+<section class="creme">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="eyebrow">O que trava quem já é bom</div>
+      <h2>Entrega excelente por dentro. Comunicação <span class="cena">improvisada</span> por fora.</h2>
+      <p class="sub">Você resolve turma, professor, pai, figurino, ensaio e matrícula. O Instagram fica para quando sobra tempo. E nunca sobra.</p>
+    </div>
+    <div class="dores">
+      <article class="dor rv"><span class="q">"Não sei o que postar hoje."</span><p>Abre o aplicativo, trava, posta no improviso ou deixa para amanhã.</p></article>
+      <article class="dor rv"><span class="q">"Passei para alguém postar."</span><p>Mas essa pessoa não conhece a escola como você, e o perfil perde a alma.</p></article>
+      <article class="dor rv"><span class="q">"A vizinha cresce mais."</span><p>Uma escola com metade da sua entrega lota a matrícula. Não ensina melhor. Comunica melhor.</p></article>
+    </div>
+    <p class="virada rv">O problema quase nunca é falta de talento. É falta de direção.</p>
+  </div>
+</section>
+
+<!-- TERMÔMETRO INTERATIVO -->
+<section id="termometro">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="eyebrow">Termômetro da escola</div>
+      <h2>Sua escola já está <span class="cena">em cena?</span></h2>
+      <p class="sub">Marque o que acontece hoje. Leva 30 segundos e o resultado vai junto na sua mensagem para a Andreza.</p>
+    </div>
+    <div class="termo rv">
+      <div class="checks" id="checks">
+        <label class="check"><input type="checkbox" value="Posto sem planejamento, no improviso"><span class="box"></span><span>Posto sem planejamento, quando dá tempo</span></label>
+        <label class="check"><input type="checkbox" value="O perfil não mostra a qualidade da escola"><span class="box"></span><span>O perfil não mostra a qualidade que a escola tem de verdade</span></label>
+        <label class="check"><input type="checkbox" value="Tenho seguidores, mas poucos viram matrícula"><span class="box"></span><span>Tenho curtida e seguidor, mas pouca matrícula vem do Instagram</span></label>
+        <label class="check"><input type="checkbox" value="Só lembro de postar em época de espetáculo ou matrícula"><span class="box"></span><span>Só lembro do Instagram em época de espetáculo ou matrícula</span></label>
+        <label class="check"><input type="checkbox" value="Minha equipe ou social media posta sem direção clara"><span class="box"></span><span>Quem posta não tem uma direção clara do que comunicar</span></label>
+      </div>
+      <div class="result" aria-live="polite">
+        <div class="escala"><span>Em cena</span><span>Nos bastidores</span></div>
+        <div class="medidor"><i id="medidor"></i></div>
+        <div class="r-titulo" id="rTitulo">Marque as frases ao lado</div>
+        <p class="r-texto" id="rTexto">Conforme você marca, o termômetro mostra o quanto a sua escola está escondida nos bastidores.</p>
+        <a class="btn btn-zap" id="rBtn" href="#" target="_blank" rel="noopener">
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#zap"/></svg>
+          Enviar meu resultado para a Andreza
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTODO EM ABAS -->
+<section class="creme" id="metodo">
+  <div class="wrap narrow">
+    <div class="head rv">
+      <div class="eyebrow">O método</div>
+      <h2>Três pilares, na ordem em que a coisa <span class="cena">funciona.</span></h2>
+      <p class="sub">Primeiro entender qual palco você quer ocupar. Depois transformar isso em comunicação. Por fim, sustentar com gestão. Pular etapa é o que faz o conteúdo virar ruído.</p>
+    </div>
+    <div class="rv">
+      <div class="abas" role="tablist" aria-label="Pilares do método">
+        <button class="aba" role="tab" id="t0" aria-selected="true" aria-controls="painel" data-i="0">01 Identidade</button>
+        <button class="aba" role="tab" id="t1" aria-selected="false" aria-controls="painel" data-i="1" tabindex="-1">02 Conteúdo</button>
+        <button class="aba" role="tab" id="t2" aria-selected="false" aria-controls="painel" data-i="2" tabindex="-1">03 Gestão</button>
+      </div>
+      <div class="painel" id="painel" role="tabpanel" aria-labelledby="t0">
+        <div class="n" id="pN">01</div>
+        <h3 id="pT" style="font-size:1.5rem">Identidade em Cena</h3>
+        <blockquote id="pQ">Quem somos, aonde queremos chegar e o que precisa entrar em cena?</blockquote>
+        <p id="pD" style="color:var(--nevoa-l)">Mergulho na história e no contexto da escola: essência, valores, repertório, diferenciais, público, percepção desejada, concorrentes, objetivos e metas.</p>
+        <div class="entrega" id="pE"><span>Diagnóstico</span><span>Posicionamento</span><span>Plano estratégico</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CICLO INTERATIVO -->
+<section id="ciclo">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="eyebrow">Mecanismo único</div>
+      <h2>O Ciclo <span class="cena">Bastidor-Palco</span></h2>
+      <p class="sub">Organiza a potência que existe por trás da escola para colocá-la em cena com estratégia, consistência e direção. Ele roda dentro dos três pilares e recomeça a cada temporada. Toque em cada etapa.</p>
+    </div>
+    <div class="ciclo-grid">
+      <div class="roda rv" id="roda">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(239,227,191,.18)" stroke-width=".6" stroke-dasharray="1.2 1.6"/>
+          <circle id="arco" cx="50" cy="50" r="40" fill="none" stroke="#d0743a" stroke-width="1" stroke-linecap="round" pathLength="100" stroke-dasharray="16.7 100" transform="rotate(-90 50 50)" style="transition:stroke-dasharray .5s"/>
+        </svg>
+        <div class="miolo"><div><span id="mPil">Identidade em Cena</span><b id="mNome">Mergulho</b></div></div>
+      </div>
+      <div class="etapa-box rv" aria-live="polite">
+        <span class="pil" id="ePil">Etapa 1 de 6 · Identidade em Cena</span>
+        <h3 id="eNome">Mergulho</h3>
+        <p id="eTxt">Pesquisar e entender a fundo a escola: história, rotina, equipe, alunos e o que faz ela ser única.</p>
+        <div class="etapa-nav">
+          <button type="button" id="ePrev">Etapa anterior</button>
+          <button type="button" id="eNext">Próxima etapa</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTORIDADE -->
+<section class="creme-2" id="sobre">
+  <div class="wrap sobre-grid">
+    <div class="retrato rv"><img src="img/tjc-palco.jpg" alt="Andreza em cena no monólogo Segurança é Vida" loading="lazy" width="1100" height="733"><small>Em cena: Segurança é Vida</small></div>
+    <div class="stack rv">
+      <div class="eyebrow" style="margin:0">Quem conduz</div>
+      <h2>Prazer, eu sou a <span class="cena">Andreza.</span></h2>
+      <p>Atriz, artista e estrategista. Venho do universo das artes. Convivi com professores excelentes, escolas cheias de vida e artistas com entrega real, e vi muitos deles sumirem no digital por falta de direção, não de talento.</p>
+      <p>Conheço a rotina de quem dirige uma escola artística: a dificuldade de sair do operacional para pensar na marca e a frustração de saber que o trabalho vale mais do que a comunicação mostra. Foi para esse cenário que criei o Método Palco Digital.</p>
+      <p>Não existe fórmula. Existe leitura, estratégia e acompanhamento real. Eu entrego direção. A captação e a publicação continuam com a sua equipe.</p>
+      <div class="numeros">
+        <div><b>1:1</b><span>Atenção individual em todos os formatos</span></div>
+        <div><b>3</b><span>Pilares que estruturam o método</span></div>
+        <div><b>6</b><span>Etapas do Ciclo Bastidor-Palco</span></div>
+      </div>
+      <span class="assina">Andreza Moura</span>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFÓLIO -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="port-top">
+      <div class="rv">
+        <div class="eyebrow">Portfólio artístico</div>
+        <h2>Quem dirige o seu palco digital vive o <span class="cena">palco de verdade.</span></h2>
+        <p class="sub">Atriz de teatro e audiovisual, com trajetória entre Goiânia, Rio de Janeiro e São Paulo. É dessa vivência de cena que nasce a direção que ela leva para cada escola.</p>
+      </div>
+      <div class="marcos rv">
+        <div><b>Desde 2006</b><span>Em formação e em cena no teatro</span></div>
+        <div><b>DRT</b><span>Atriz com registro profissional</span></div>
+        <div><b>Rede Globo</b><span>Participação na novela Rock Story</span></div>
+        <div><b>3 linguagens</b><span>Teatro, teatro musical e audiovisual</span></div>
+      </div>
+    </div>
+
+    <a class="reel rv" id="reel" href="https://www.youtube.com/watch?v=OtdEubzTITQ" target="_blank" rel="noopener" aria-label="Assistir ao demo reel da Andreza">
+      <img src="img/dancarinas-2.jpg" alt="" loading="lazy" width="1200" height="675">
+      <span class="reel-play"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+      <span class="reel-info"><small>Demo reel</small><b>Andreza Moura, atriz</b><em>Toque para assistir</em></span>
+    </a>
+
+    <div class="filtros rv" role="group" aria-label="Filtrar fotos">
+      <button type="button" aria-pressed="true" data-f="todos">Todos</button>
+      <button type="button" aria-pressed="false" data-f="teatro">Teatro</button>
+      <button type="button" aria-pressed="false" data-f="audiovisual">Audiovisual</button>
+    </div>
+    <div class="galeria rv" id="galeria">
+      <button type="button" class="foto-g alta" data-cat="teatro"><img src="img/separei-casa-cheia.jpg" alt="Teatro lotado na peça Separei. E Agora?" loading="lazy" width="562" height="1000"><span>Separei. E Agora? · casa cheia, RJ</span></button>
+      <button type="button" class="foto-g" data-cat="teatro"><img src="img/tjc-palco.jpg" alt="Andreza em cena no monólogo Segurança é Vida" loading="lazy" width="1100" height="733"><span>Segurança é Vida · monólogo</span></button>
+      <button type="button" class="foto-g" data-cat="teatro"><img src="img/tjc-plateia.jpg" alt="Apresentação do monólogo Segurança é Vida para o público" loading="lazy" width="1200" height="800"><span>Segurança é Vida · Projeto TJC</span></button>
+      <button type="button" class="foto-g" data-cat="audiovisual"><img src="img/eco-set-1.jpg" alt="Andreza no set do curta Eco" loading="lazy" width="1100" height="734"><span>Eco · curta-metragem</span></button>
+      <button type="button" class="foto-g" data-cat="audiovisual"><img src="img/eco-set-2.jpg" alt="Gravação de cena do curta Eco" loading="lazy" width="1100" height="734"><span>Eco · bastidores do set</span></button>
+      <button type="button" class="foto-g" data-cat="audiovisual"><img src="img/dancarinas-1.jpg" alt="Cena do curta Dançarinas" loading="lazy" width="1200" height="675"><span>Dançarinas · curta-metragem</span></button>
+      <button type="button" class="foto-g" data-cat="audiovisual"><img src="img/eco-set-3.jpg" alt="Equipe e elenco no set do curta Eco" loading="lazy" width="1100" height="734"><span>Eco · elenco e equipe</span></button>
+      <button type="button" class="foto-g" data-cat="audiovisual"><img src="img/dancarinas-2.jpg" alt="Andreza como Rafaela no curta Dançarinas" loading="lazy" width="1200" height="675"><span>Dançarinas · Rafaela</span></button>
+    </div>
+
+    <div class="creditos">
+      <div class="rv">
+        <div class="eyebrow">Experiência artística</div>
+        <ul class="linha-t">
+          <li><span class="ano">2023 a 2026</span><b>Segurança é Vida</b><small>Monólogo · direção Samuel Baldani · Projeto TJC, Associação Nacional dos Magistrados da Justiça do Trabalho</small></li>
+          <li><span class="ano">2025</span><b>Carta Aberta</b><small>Teatro musical · personagens Edinalva e Dona Dora · direção Jeane Valadares · Mvsika! Centro de Estudos</small></li>
+          <li><span class="ano">2022</span><b>Eco</b><small>Curta-metragem · personagem Marisa · direção Elisa Lobo Jayme</small></li>
+          <li><span class="ano">2020</span><b>Dançarinas</b><small>Curta-metragem · personagem Rafaela · direção Paulo Morais e Pedro Hagaffer</small></li>
+          <li><span class="ano">2017 a 2018</span><b>Separei. E Agora?</b><small>Teatro · direção Robson Lima e Marcelo Duque · Rio de Janeiro</small></li>
+          <li><span class="ano">2017</span><b>Rock Story</b><small>Novela · participação · Rede Globo</small></li>
+          <li><span class="ano">2015 a 2016</span><b>MC Favorito: Perigos Online</b><small>Teatro · personagem Gabi · Cia Bento Vasconcelos · GO, TO e SE</small></li>
+        </ul>
+      </div>
+      <div class="stack rv">
+        <div class="eyebrow" style="margin:0">Formação</div>
+        <div class="form-list">
+          <div><b>Audiovisual</b><span>Victor Ferrade, Ricardo Conti e Wolf Maya (RJ) · Oficina de cinema com Odécio Antônio no Martim Cererê</span></div>
+          <div><b>Teatro</b><span>Oficinas com Robson Lima, Samuel Baldani, Eduardo de Souza e Marcos Honda (Goiânia e Inhumas)</span></div>
+          <div><b>Teatro musical</b><span>Master classes com David Zellnik e Andréia Vitfer</span></div>
+        </div>
+        <div class="habs"><span>Ballet clássico</span><span>Jazz</span><span>Contemporâneo</span><span>Sapateado</span><span>Técnica vocal</span></div>
+        <div class="btns" style="margin-top:8px">
+          <a class="btn btn-luz" href="https://www.youtube.com/watch?v=OtdEubzTITQ" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>Ver demo reel</a>
+          <a class="btn btn-o" href="https://drive.google.com/file/d/1MCravZ2xbJXDwtWYlCJlK1lOvGrea9Wi/view?usp=drive_link" target="_blank" rel="noopener">Portfólio completo em PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section id="trilhas">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="eyebrow">Por onde começa</div>
+      <h2>Antes de contratar qualquer coisa, a gente precisa <span class="cena">enxergar</span> a sua escola.</h2>
+      <p class="sub">O Diagnóstico é o primeiro passo de todo mundo. Depois dele, você escolhe a trilha que acompanha o ritmo da sua escola.</p>
+    </div>
+    <div class="ofertas">
+      <article class="card diag rv">
+        <span class="tipo">Passo 1 · Diagnóstico Digital da Escola</span>
+        <div class="preco">R$ 350<small>,00</small></div>
+        <p style="color:var(--nevoa-l)">Um encontro feito de perguntas estratégicas para mostrar onde está o buraco entre o que a escola entrega e o que o digital comunica. Você não precisa saber de marketing. Só precisa conhecer a sua escola.</p>
+        <ul class="lista">
+          <li>1 encontro de 1h a 1h30, ao vivo</li>
+          <li>Perguntas sobre marca, público e comunicação</li>
+          <li>Plano de ação enviado depois do encontro</li>
+          <li>Serve para escola, estúdio, companhia ou artista</li>
+        </ul>
+        <a class="btn btn-vinho" data-wa="diagnostico" href="#" target="_blank" rel="noopener">Agendar meu Diagnóstico</a>
+      </article>
+      <article class="card trilha rv">
+        <span class="tipo">Passo 2 · Palco Empresa, a consultoria</span>
+        <div class="seg" role="group" aria-label="Escolha a duração">
+          <button type="button" aria-pressed="false" data-plano="semestral">Semestral</button>
+          <button type="button" aria-pressed="true" data-plano="anual">Anual</button>
+        </div>
+        <h3 id="plTitulo" style="font-size:1.5rem">Consultoria Anual<span class="tag">Recomendada</span></h3>
+        <span class="dur" id="plDur">12 meses, encontros mensais</span>
+        <ul class="lista" id="plLista"></ul>
+        <p class="nota" id="plNota">Uma escola de arte vive um ciclo de um ano: matrícula, Dia das Mães, espetáculo, férias e retorno. Em seis meses você vive metade dele. O ano completo é o que fecha o ciclo.</p>
+        <a class="btn btn-luz" id="plBtn" href="#" target="_blank" rel="noopener">Falar sobre a Anual</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROVA -->
+<section class="creme" id="depoimentos">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="eyebrow">Quem já entrou em cena</div>
+      <h2>O que mudou para quem passou pelo <span class="cena">método</span></h2>
+    </div>
+    <div class="trilho" id="trilho" tabindex="0" aria-label="Depoimentos">
+      <figure class="dep"><span class="origem">Escola atendida</span><blockquote>"Antes, o perfil da escola já era bonito. Agora, é estratégico: tem identidade, posicionamento e conteúdo alinhados à essência da escola."</blockquote><figcaption><i>FE</i><div>Fleur Escola de Artes<span>Escola de artes</span></div></figcaption></figure>
+      <figure class="dep"><span class="origem">Escola atendida</span><blockquote>"Se sentir dona do posicionamento da sua escola é outro nível."</blockquote><figcaption><i>A</i><div>Angélica<span>Diretora e professora de escola de dança</span></div></figcaption></figure>
+      <figure class="dep"><span class="origem">WhatsApp, mensagem real</span><blockquote>"Foi bom demais viver essa mentoria com você. Cada conversa abriu espaço pra eu mostrar meu trabalho com mais clareza e intenção."</blockquote><figcaption><i>M</i><div>Mentorado<span>Palco Digital</span></div></figcaption></figure>
+      <figure class="dep"><span class="origem">WhatsApp, mensagem real</span><blockquote>"Muito obrigado pelo suporte. Arrasou em tudo. Te indiquei mais uma pessoa para a Mentoria."</blockquote><figcaption><i>F</i><div>Filipe<span>Mentorado</span></div></figcaption></figure>
+    </div>
+    <div class="dep-nav">
+      <button class="seta" type="button" id="dPrev" aria-label="Depoimento anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="dots" id="dots"></div>
+      <button class="seta" type="button" id="dNext" aria-label="Próximo depoimento"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section id="contato">
+  <div class="wrap form-grid">
+    <div class="stack rv">
+      <div class="eyebrow" style="margin:0">Reserve seu Diagnóstico</div>
+      <h2>Conta um pouco da sua escola e a gente <span class="cena">começa daí.</span></h2>
+      <p class="sub" style="margin:0">Preencha em 1 minuto. Sua mensagem chega pronta no WhatsApp da Andreza, é só tocar em enviar.</p>
+    </div>
+    <form id="form" class="rv" novalidate>
+      <div class="duas">
+        <div class="campo"><label for="fNome">Seu nome</label><input id="fNome" autocomplete="name" placeholder="Como posso te chamar?"></div>
+        <div class="campo"><label for="fEscola">Escola ou projeto</label><input id="fEscola" placeholder="Nome da escola"></div>
+      </div>
+      <div class="duas">
+        <div class="campo"><label for="fCidade">Cidade</label><input id="fCidade" autocomplete="address-level2" placeholder="Goiânia, GO"></div>
+        <div class="campo"><label for="fInsta">Instagram</label><input id="fInsta" placeholder="@suaescola"></div>
+      </div>
+      <div class="campo"><label for="fDesafio">Maior desafio hoje</label>
+        <select id="fDesafio">
+          <option value="">Escolha uma opção</option>
+          <option>Não sei o que postar</option>
+          <option>O perfil não traz matrícula</option>
+          <option>Falta constância</option>
+          <option>Quem posta não tem direção</option>
+          <option>Quero reposicionar a escola</option>
+          <option>Sou artista e quero cuidar da minha marca</option>
+        </select>
+      </div>
+      <div class="previa" id="previa" aria-live="polite">Sua mensagem aparece aqui enquanto você preenche.</div>
+      <span class="msg-erro" id="fErro" role="alert"></span>
+      <a class="btn btn-zap" id="fBtn" href="#" target="_blank" rel="noopener">
+        <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#zap"/></svg>
+        Enviar no WhatsApp
+      </a>
+    </form>
+  </div>
+</section>
+
+<!-- PALCO SOLO -->
+<section class="creme-2" id="solo">
+  <div class="wrap">
+    <div class="solo rv">
+      <div class="stack">
+        <div class="eyebrow" style="margin:0">Também atendo</div>
+        <h2>Você é artista, <span class="cena">não escola?</span></h2>
+        <p>O mesmo método atende marca pessoal de cantores, bailarinos, músicos, atores e coreógrafos. Artista não é influenciador: não se mostra rotina comum, se constrói universo. O bastidor é curado e a presença preserva a aura em vez de gastá-la.</p>
+        <div class="info"><span>3 meses</span><span>6 encontros quinzenais</span><span>3 pilares</span></div>
+      </div>
+      <a class="btn btn-vinho" data-wa="solo" href="#" target="_blank" rel="noopener">Falar sobre o Palco Solo</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="creme">
+  <div class="wrap narrow">
+    <div class="head rv">
+      <div class="eyebrow">Suas dúvidas</div>
+      <h2>Respondendo o que você já está pensando</h2>
+    </div>
+    <div class="faq rv">
+      <details><summary>Preciso fazer o Diagnóstico antes de contratar uma trilha?</summary><p>Sim. Ele é o primeiro passo de qualquer trilha. É nele que eu enxergo a sua escola e indico o caminho certo para o seu momento.</p></details>
+      <details><summary>Você faz os meus posts?</summary><p>Não. Eu entrego a direção: cronograma, roteiros e legendas. A sua equipe capta e publica, e a conta continua sempre sua.</p></details>
+      <details><summary>Sou artista e não tenho escola. Serve para mim?</summary><p>Serve. Para artistas existe a trilha Palco Solo, com três meses e seis encontros quinzenais.</p></details>
+      <details><summary>Já tenho social media. Ainda preciso disso?</summary><p>Social media executa. Eu dou a direção que ela vai executar: posicionamento, narrativa e o que comunicar em cada época do ano. As duas coisas se completam.</p></details>
+      <details><summary>Preciso ter experiência com marketing digital?</summary><p>Não. Você só precisa conhecer a sua escola. O resto a gente constrói junto.</p></details>
+      <details><summary>Como funciona o pagamento das trilhas?</summary><p>As condições são combinadas depois do Diagnóstico, de acordo com a trilha escolhida. Chama no WhatsApp que eu te explico.</p></details>
+      <details><summary>Em quanto tempo eu vejo resultado?</summary><p>A clareza vem já no Diagnóstico. Procura e matrícula crescem ao longo dos meses, conforme a escola entra em cena com constância.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final">
+  <div class="wrap">
+    <div class="eyebrow">Próximo passo</div>
+    <h2>O digital é um palco. A questão é como você <span class="cena">entra nele.</span></h2>
+    <p class="sub" style="margin:0">Talento sem direção vira ruído. Presença com estratégia vira palco. Comece pelo Diagnóstico e descubra o que a sua escola está deixando de comunicar.</p>
+    <div class="btns">
+      <a class="btn btn-luz" data-wa="diagnostico" href="#" target="_blank" rel="noopener">Agendar o Diagnóstico</a>
+      <a class="btn btn-o" href="https://www.instagram.com/meupalcodigital/" target="_blank" rel="noopener">Ver o @meupalcodigital</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Palco Digital por Andreza Moura</span>
+    <span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">@meupalcodigital · <span id="tel" style="user-select:all">(62) 99913-5808</span><button class="copiar" id="copiar" type="button">Copiar número</button></span>
+  </div>
+</footer>
+
+<div class="barra hide" id="barra">
+  <a class="btn btn-zap" data-wa="barra" href="#" target="_blank" rel="noopener">
+    <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#zap"/></svg>
+    Falar com a Andreza no WhatsApp
+  </a>
+</div>
+<a class="flut" id="flut" data-wa="barra" href="#" target="_blank" rel="noopener" aria-label="Falar com a Andreza no WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#zap"/></svg>
+</a>
+
+<dialog class="lb" id="lb" aria-label="Foto ampliada">
+  <img id="lbImg" src="" alt="">
+  <p id="lbTxt"></p>
+  <div class="lb-bar"><button type="button" id="lbPrev" aria-label="Foto anterior">‹</button><button type="button" id="lbClose">Fechar</button><button type="button" id="lbNext" aria-label="Próxima foto">›</button></div>
+</dialog>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="zap" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.6.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.2Z"/></symbol></svg>
+
+<script>
+(function(){
+  document.documentElement.classList.add("js");
+  var NUM = "5562999135808";
+  var wa = function(t){ return "https://wa.me/" + NUM + "?text=" + encodeURIComponent(t); };
+  var MSG = {
+    topo: "Oi, Andreza! Vi a página do Palco Digital e quero entender como funciona.",
+    diagnostico: "Oi, Andreza! Quero agendar o Diagnóstico Digital da minha escola. Como está a sua agenda?",
+    solo: "Oi, Andreza! Sou artista e quero saber mais sobre o Palco Solo.",
+    barra: "Oi, Andreza! Vim pela sua página e quero saber mais sobre o Palco Digital."
+  };
+  document.querySelectorAll("[data-wa]").forEach(function(a){ a.href = wa(MSG[a.dataset.wa] || MSG.barra); });
+
+  /* Menu mobile */
+  var burger = document.getElementById("burger"), gav = document.getElementById("gaveta");
+  burger.addEventListener("click", function(){ var o = gav.hidden; gav.hidden = !o; burger.setAttribute("aria-expanded", String(o)); });
+  gav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ gav.hidden = true; burger.setAttribute("aria-expanded","false"); }); });
+
+  /* Entrada suave */
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("on"); io.unobserve(e.target); } }); }, {rootMargin:"0px 0px -8% 0px"});
+    document.querySelectorAll(".rv").forEach(function(el){ io.observe(el); });
+    /* Barra fixa aparece quando o topo sai da tela */
+    var barra = document.getElementById("barra"), flut = document.getElementById("flut");
+    new IntersectionObserver(function(es){ var vis = es[0].isIntersecting; barra.classList.toggle("hide", vis); flut.classList.toggle("hide", !vis); }).observe(document.getElementById("hero"));
+  } else { document.querySelectorAll(".rv").forEach(function(el){ el.classList.add("on"); }); document.getElementById("barra").classList.remove("hide"); }
+
+  /* Barra de progresso */
+  var prog = document.getElementById("progresso");
+  window.addEventListener("scroll", function(){ var h = document.documentElement; var p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight); prog.style.width = (p*100).toFixed(1) + "%"; }, {passive:true});
+
+  /* Termômetro */
+  var checks = Array.prototype.slice.call(document.querySelectorAll("#checks input"));
+  var med = document.getElementById("medidor"), rT = document.getElementById("rTitulo"), rX = document.getElementById("rTexto"), rB = document.getElementById("rBtn");
+  var NIV = [
+    ["Marque as frases ao lado","Conforme você marca, o termômetro mostra o quanto a sua escola está escondida nos bastidores."],
+    ["Quase em cena","Tem pouca coisa travando, mas um ajuste de direção já muda a percepção de quem chega no perfil."],
+    ["Meio palco, meio bastidor","A escola aparece, mas não mostra o que entrega. Dá para organizar isso com método e calendário."],
+    ["Escondida nos bastidores","A qualidade está lá dentro e não chega no digital. É exatamente o cenário que o Diagnóstico resolve."]
+  ];
+  function termo(){
+    var on = checks.filter(function(c){ return c.checked; });
+    checks.forEach(function(c){ c.closest(".check").classList.toggle("on", c.checked); });
+    var n = on.length, nv = n === 0 ? 0 : n <= 1 ? 1 : n <= 3 ? 2 : 3;
+    med.style.width = (8 + n * 18.4) + "%";
+    rT.textContent = NIV[nv][0]; rX.textContent = NIV[nv][1];
+    var t = n === 0 ? MSG.diagnostico : "Oi, Andreza! Fiz o termômetro da sua página e marquei " + n + " de 5:\n" + on.map(function(c){ return "• " + c.value; }).join("\n") + "\n\nResultado: " + NIV[nv][0] + ". Quero entender como o Diagnóstico pode ajudar a minha escola.";
+    rB.href = wa(t);
+  }
+  checks.forEach(function(c){ c.addEventListener("change", termo); }); termo();
+
+  /* Pilares em abas */
+  var PIL = [
+    ["01","Identidade em Cena","Quem somos, aonde queremos chegar e o que precisa entrar em cena?","Mergulho na história e no contexto da escola: essência, valores, repertório, diferenciais, público, percepção desejada, concorrentes, objetivos e metas.",["Diagnóstico","Posicionamento","Plano estratégico"]],
+    ["02","Conteúdo em Cena","Como transformar identidade em algo que o público veja, entenda e deseje?","Narrativa da marca, mensagem central, linhas editoriais, pilares de conteúdo, formatos, calendário, roteiros e campanhas. Conteúdo não é inventar uma vida. É revelar com estratégia a potência que já existe.",["Estratégia","Linhas editoriais","Calendário"]],
+    ["03","Gestão em Cena","Como acompanhar e melhorar para a presença gerar resultado real?","Rotina de produção, processos, direção de equipe e prestadores, ferramentas, métricas, análise de desempenho e ajuste de rota.",["Rotina","Indicadores","Autonomia"]]
+  ];
+  var abas = Array.prototype.slice.call(document.querySelectorAll(".aba")), painel = document.getElementById("painel");
+  function aba(i, foco){
+    abas.forEach(function(b,j){ b.setAttribute("aria-selected", String(i===j)); b.tabIndex = i===j ? 0 : -1; });
+    var p = PIL[i];
+    document.getElementById("pN").textContent = p[0]; document.getElementById("pT").textContent = p[1];
+    document.getElementById("pQ").textContent = p[2]; document.getElementById("pD").textContent = p[3];
+    document.getElementById("pE").innerHTML = p[4].map(function(x){ return "<span>"+x+"</span>"; }).join("");
+    painel.setAttribute("aria-labelledby","t"+i);
+    painel.classList.remove("troca"); void painel.offsetWidth; painel.classList.add("troca");
+    if (foco) abas[i].focus();
+  }
+  abas.forEach(function(b,i){
+    b.addEventListener("click", function(){ aba(i); });
+    b.addEventListener("keydown", function(e){ if (e.key==="ArrowRight") aba((i+1)%3,true); if (e.key==="ArrowLeft") aba((i+2)%3,true); });
+  });
+
+  /* Ciclo Bastidor-Palco */
+  var ET = [
+    ["Mergulho","Identidade em Cena","Pesquisar e entender a fundo a escola: história, rotina, equipe, alunos e o que faz ela ser única."],
+    ["Direção","Identidade em Cena","Definir essência, posicionamento, público, objetivos, metas e os parâmetros que guiam tudo o que vem depois."],
+    ["Roteiro","Conteúdo em Cena","Transformar a direção em narrativa, linhas editoriais, calendário e campanhas da temporada."],
+    ["Cena","Conteúdo em Cena","Produzir, publicar, aparecer e colocar a comunicação da escola em movimento."],
+    ["Resposta","Gestão em Cena","Observar a reação do público: métricas, procura, contatos, matrículas e oportunidades."],
+    ["Ajuste","Gestão em Cena","Analisar, corrigir a rota e preparar a próxima entrada em cena. E o ciclo recomeça."]
+  ];
+  var roda = document.getElementById("roda"), nos = [], atual = 0, auto = null;
+  ET.forEach(function(e,i){
+    var b = document.createElement("button"); b.type = "button"; b.className = "no"; b.setAttribute("aria-label","Etapa "+(i+1)+": "+e[0]);
+    var ang = (-90 + i*60) * Math.PI/180;
+    b.style.left = (50 + 40*Math.cos(ang)) + "%"; b.style.top = (50 + 40*Math.sin(ang)) + "%";
+    b.innerHTML = (i+1) + "<small>"+e[0]+"</small>";
+    b.addEventListener("click", function(){ parar(); etapa(i); });
+    roda.appendChild(b); nos.push(b);
+  });
+  function etapa(i){
+    atual = (i+6)%6; var e = ET[atual];
+    nos.forEach(function(n,j){ n.classList.toggle("ativo", j===atual); n.setAttribute("aria-pressed", String(j===atual)); });
+    document.getElementById("arco").setAttribute("stroke-dasharray", ((atual+1)*16.67).toFixed(2) + " 100");
+    document.getElementById("mNome").textContent = e[0]; document.getElementById("mPil").textContent = e[1];
+    document.getElementById("eNome").textContent = e[0]; document.getElementById("eTxt").textContent = e[2];
+    document.getElementById("ePil").textContent = "Etapa " + (atual+1) + " de 6 · " + e[1];
+  }
+  function parar(){ if (auto){ clearInterval(auto); auto = null; } }
+  document.getElementById("ePrev").addEventListener("click", function(){ parar(); etapa(atual-1); });
+  document.getElementById("eNext").addEventListener("click", function(){ parar(); etapa(atual+1); });
+  etapa(0);
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window){
+    new IntersectionObserver(function(es){ if (es[0].isIntersecting && auto===null && !roda.dataset.tocou){ roda.dataset.tocou = "1"; auto = setInterval(function(){ etapa(atual+1); }, 3200); } }, {threshold:.5}).observe(roda);
+  }
+
+  /* Trilhas */
+  var PL = {
+    semestral: {t:"Consultoria Semestral", tag:false, d:"6 meses, encontros mensais", l:["Diagnóstico e construção do branding da escola","Narrativa e posicionamento definidos","Linhas editoriais próprias","Cronograma, roteiros e legendas todo mês","Meio ciclo do ano: uma temporada de matrícula e um grande evento","Suporte por WhatsApp em horário comercial"], n:"Ideal para organizar a casa e atravessar uma temporada importante com direção.", b:"Falar sobre a Semestral", m:"Oi, Andreza! Quero saber mais sobre a Consultoria Semestral do Palco Digital."},
+    anual: {t:"Consultoria Anual", tag:true, d:"12 meses, encontros mensais", l:["Tudo da Semestral, ao longo do ano inteiro","Planejamento anual de conteúdo e campanhas","Toda a sazonalidade: matrícula, datas, espetáculo, férias e retorno","Análise mensal do mês anterior e ajuste do seguinte","Direção da equipe e dos prestadores","Suporte por WhatsApp em horário comercial"], n:"Uma escola de arte vive um ciclo de um ano: matrícula, Dia das Mães, espetáculo, férias e retorno. Em seis meses você vive metade dele. O ano completo é o que fecha o ciclo.", b:"Falar sobre a Anual", m:"Oi, Andreza! Quero saber mais sobre a Consultoria Anual do Palco Digital."}
+  };
+  var segs = Array.prototype.slice.call(document.querySelectorAll(".seg button"));
+  function plano(k){
+    var p = PL[k];
+    segs.forEach(function(s){ s.setAttribute("aria-pressed", String(s.dataset.plano===k)); });
+    document.getElementById("plTitulo").innerHTML = p.t + (p.tag ? '<span class="tag">Recomendada</span>' : "");
+    document.getElementById("plDur").textContent = p.d;
+    document.getElementById("plLista").innerHTML = p.l.map(function(x){ return "<li>"+x+"</li>"; }).join("");
+    document.getElementById("plNota").textContent = p.n;
+    var btn = document.getElementById("plBtn"); btn.textContent = p.b; btn.href = wa(p.m);
+  }
+  segs.forEach(function(s){ s.addEventListener("click", function(){ plano(s.dataset.plano); }); });
+  plano("anual");
+
+  /* Carrossel */
+  var tr = document.getElementById("trilho"), cards = Array.prototype.slice.call(tr.children), dots = document.getElementById("dots");
+  cards.forEach(function(c,i){ var d = document.createElement("button"); d.type="button"; d.setAttribute("aria-label","Ir para o depoimento "+(i+1)+" de "+cards.length); d.addEventListener("click", function(){ ir(i); }); dots.appendChild(d); });
+  var dbs = Array.prototype.slice.call(dots.children);
+  function idx(){ var best=0, min=1e9; cards.forEach(function(c,i){ var dd = Math.abs(c.offsetLeft - tr.offsetLeft - tr.scrollLeft - parseFloat(getComputedStyle(tr).paddingLeft)); if (dd<min){min=dd;best=i;} }); return best; }
+  function marca(){ var k = idx(); dbs.forEach(function(d,i){ d.setAttribute("aria-current", String(i===k)); }); }
+  function ir(i){ i = (i + cards.length) % cards.length; tr.scrollTo({left: cards[i].offsetLeft - tr.offsetLeft - parseFloat(getComputedStyle(tr).paddingLeft), behavior:"smooth"}); }
+  document.getElementById("dPrev").addEventListener("click", function(){ ir(idx()-1); });
+  document.getElementById("dNext").addEventListener("click", function(){ ir(idx()+1); });
+  var tmr; tr.addEventListener("scroll", function(){ clearTimeout(tmr); tmr = setTimeout(marca, 80); }, {passive:true});
+  marca();
+
+  /* Formulário que monta a mensagem */
+  var F = {nome:"fNome", escola:"fEscola", cidade:"fCidade", insta:"fInsta", desafio:"fDesafio"};
+  Object.keys(F).forEach(function(k){ F[k] = document.getElementById(F[k]); });
+  var previa = document.getElementById("previa"), fBtn = document.getElementById("fBtn"), fErro = document.getElementById("fErro");
+  F.insta.addEventListener("blur", function(){ var v = F.insta.value.trim(); if (v && v[0] !== "@") F.insta.value = "@" + v.replace(/^.*instagram\.com\//,"").replace(/\/.*$/,""); montar(); });
+  function texto(){
+    var v = function(k){ return F[k].value.trim(); };
+    var t = "Oi, Andreza! Quero reservar o Diagnóstico Digital.";
+    if (v("nome")) t += "\nSou " + v("nome") + (v("escola") ? ", da " + v("escola") : "") + (v("cidade") ? " (" + v("cidade") + ")" : "") + ".";
+    else if (v("escola")) t += "\nEscola: " + v("escola") + (v("cidade") ? " (" + v("cidade") + ")" : "") + ".";
+    if (v("insta")) t += "\nInstagram: " + v("insta");
+    if (v("desafio")) t += "\nMaior desafio hoje: " + v("desafio") + ".";
+    return t;
+  }
+  function montar(){
+    var t = texto(); previa.textContent = t; fBtn.href = wa(t);
+    ["nome","desafio"].forEach(function(k){ if (F[k].value.trim()) F[k].closest(".campo").classList.remove("erro"); });
+    if (F.nome.value.trim() && F.desafio.value) fErro.textContent = "";
+  }
+  Object.keys(F).forEach(function(k){ F[k].addEventListener("input", montar); F[k].addEventListener("change", montar); });
+  fBtn.addEventListener("click", function(e){
+    var falta = [];
+    if (!F.nome.value.trim()){ falta.push("seu nome"); F.nome.closest(".campo").classList.add("erro"); }
+    if (!F.desafio.value){ falta.push("o maior desafio"); F.desafio.closest(".campo").classList.add("erro"); }
+    if (falta.length){ e.preventDefault(); fErro.textContent = "Preencha " + falta.join(" e ") + " para a Andreza já chegar sabendo do seu momento."; (F.nome.value.trim() ? F.desafio : F.nome).focus(); }
+  });
+  document.getElementById("form").addEventListener("submit", function(e){ e.preventDefault(); fBtn.click(); });
+  montar();
+
+
+  /* Portfólio: filtro e ampliação */
+  var fots = Array.prototype.slice.call(document.querySelectorAll(".foto-g")), fbs = Array.prototype.slice.call(document.querySelectorAll(".filtros button"));
+  fbs.forEach(function(b){ b.addEventListener("click", function(){
+    var f = b.dataset.f; fbs.forEach(function(x){ x.setAttribute("aria-pressed", String(x===b)); });
+    fots.forEach(function(el){ el.hidden = !(f==="todos" || el.dataset.cat===f); });
+  }); });
+  var lb = document.getElementById("lb"), lbI = document.getElementById("lbImg"), lbT = document.getElementById("lbTxt"), li = 0;
+  function vis(){ return fots.filter(function(el){ return !el.hidden; }); }
+  function abre(el){ var v = vis(); li = v.indexOf(el); var im = el.querySelector("img"); lbI.src = im.src; lbI.alt = im.alt; lbT.textContent = el.querySelector("span").textContent; }
+  fots.forEach(function(el){ el.addEventListener("click", function(){ abre(el); if (lb.showModal) lb.showModal(); else lb.setAttribute("open",""); }); });
+  function passo(d){ var v = vis(); abre(v[(li + d + v.length) % v.length]); }
+  document.getElementById("lbPrev").addEventListener("click", function(){ passo(-1); });
+  document.getElementById("lbNext").addEventListener("click", function(){ passo(1); });
+  document.getElementById("lbClose").addEventListener("click", function(){ lb.close ? lb.close() : lb.removeAttribute("open"); });
+  lb.addEventListener("click", function(e){ if (e.target === lb && lb.close) lb.close(); });
+  lb.addEventListener("keydown", function(e){ if (e.key==="ArrowRight") passo(1); if (e.key==="ArrowLeft") passo(-1); });
+
+
+  /* Vídeo toca na própria página */
+  var reel = document.getElementById("reel");
+  reel.addEventListener("click", function(e){
+    e.preventDefault();
+    var f = document.createElement("iframe");
+    f.src = "https://www.youtube-nocookie.com/embed/OtdEubzTITQ?autoplay=1&rel=0";
+    f.title = "Demo reel Andreza Moura"; f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen = true;
+    f.style.cssText = "position:absolute;inset:0;width:100%;height:100%;border:0;z-index:2";
+    reel.classList.add("tocando"); reel.appendChild(f); reel.removeAttribute("href");
+  }, {once:true});
+
+  /* Copiar número */
+  var cp = document.getElementById("copiar");
+  cp.addEventListener("click", function(){
+    var ok = function(){ cp.textContent = "Copiado"; setTimeout(function(){ cp.textContent = "Copiar número"; }, 1800); };
+    var sel = function(){ var r = document.createRange(); r.selectNodeContents(document.getElementById("tel")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); cp.textContent = "Selecionado, copie"; };
+    try { navigator.clipboard.writeText("62999135808").then(ok, sel); } catch(_) { sel(); }
+  });
+})();
+</script>
+</body>
+</html>
